@@ -14,11 +14,11 @@
     },
     "devDependencies": {
         "center-align": "^1.0.1",
-        "chalk": "^4.1.0",
         "jest": "^26.6.3",
         "nodemon": "^2.0.6"
     },
     "dependencies": {
+        "chalk": "^4.1.0",
         "axios": "^0.21.1",
         "discord.js": "^12.5.1",
         "dotenv": "^8.2.0",
