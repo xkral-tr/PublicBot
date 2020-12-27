@@ -20,7 +20,7 @@
 -   [Node.js](https://nodejs.org/)
 -   [MongoDB](https://www.mongodb.com)
 
-### 🚀 Getting Started
+### Getting Started
 
 You must first go to the [.env.example](.env.example) file and edit it. Everything explained there.
 
@@ -33,11 +33,9 @@ Then you can run bot with this command
     npm run start
 
 ### Deploying to Heroku
-
-**Click this button**
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/xkral-tr/PublicBot)
 
-### 🤝 Contributing
+### Contributing
 
 -   Fork this repo
 -   Make changes
