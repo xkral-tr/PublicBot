@@ -1,0 +1,10 @@
+{
+    "prefix": "!",
+    "version": "0.1.0",
+    "presenceType": "PLAYING",
+    "status": "online",
+    "commandsDir": "../commands",
+    "description": "Hey!",
+    "botName": "Public Bot",
+    "defaultLanguage": "en"
+}

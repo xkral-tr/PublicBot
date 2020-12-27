@@ -1,0 +1,28 @@
+{
+    "name": "publicbot",
+    "version": "0.1.0",
+    "description": "A public bot",
+    "main": "src/index.js",
+    "author": "xkraltr",
+    "license": "MIT",
+    "private": false,
+    "scripts": {
+        "start": "node src/index.js",
+        "dev": "nodemon src/index.js",
+        "test": "npx jest --verbose ./test/unit",
+        "schemaUpdate": "node src/database/SchemaUpdate.js"
+    },
+    "devDependencies": {
+        "center-align": "^1.0.1",
+        "chalk": "^4.1.0",
+        "jest": "^26.6.3",
+        "nodemon": "^2.0.6"
+    },
+    "dependencies": {
+        "axios": "^0.21.1",
+        "discord.js": "^12.5.1",
+        "dotenv": "^8.2.0",
+        "glob": "^7.1.6",
+        "mongoose": "^5.11.8"
+    }
+}

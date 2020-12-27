@@ -1,0 +1,23 @@
+{
+    "name": "PublicBot",
+    "keywords": ["bot", "discord bot"],
+    "repository": "https://github.com/xkral-tr/PublicBot",
+    "env": {
+        "BOT_TOKEN": {
+            "description": "Discord bot token",
+            "generator": "secret"
+        },
+        "DATABASE_URL": {
+            "description": "A mongodb database connection url",
+            "generator": "secret"
+        }
+    },
+    "environments": {
+        "test": {
+            "env": {
+                "BOT_TOKEN": "[BOT TOKEN]",
+                "DATABASE_URL": "[DATABASE URL]"
+            }
+        }
+    }
+}

@@ -1,0 +1,14 @@
+////////////////////////////////////////
+///
+///     ContentChecker.js
+///
+////////////////////////////////////////
+///     require API key.
+////////////////////////////////////////
+
+const Discord = require('discord.js');
+const axios = require('axios');
+
+class ContentChecker {
+    constructor() {}
+}
