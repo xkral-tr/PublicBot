@@ -13,11 +13,11 @@
         "schemaUpdate": "node src/database/SchemaUpdate.js"
     },
     "devDependencies": {
-        "center-align": "^1.0.1",
         "jest": "^26.6.3",
         "nodemon": "^2.0.6"
     },
     "dependencies": {
+        "center-align": "^1.0.1",
         "axios": "^0.21.1",
         "chalk": "^4.1.0",
         "discord.js": "^12.5.1",
