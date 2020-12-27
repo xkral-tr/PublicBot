@@ -5,11 +5,9 @@
     "env": {
         "BOT_TOKEN": {
             "description": "Discord bot token",
-            "generator": "secret"
         },
         "DATABASE_URL": {
             "description": "A mongodb database connection url",
-            "generator": "secret"
         }
     },
     "environments": {
