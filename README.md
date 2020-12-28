@@ -2,7 +2,7 @@
 
 Public bot is an open source discord bot.
 
-![](https://img.shields.io/github/watchers/xkral-tr/PublicBot?style=flat) ![](https://img.shields.io/github/forks/xkral-tr/PublicBot?style=flat) ![](https://img.shields.io/github/stars/xkral-tr/PublicBot?style=flat) ![](https://badges.frapsoft.com/os/v1/open-source.svg)
+![](https://img.shields.io/github/watchers/xkral-tr/PublicBot?style=flat) ![](https://img.shields.io/github/forks/xkral-tr/PublicBot?style=flat) ![](https://img.shields.io/github/stars/xkral-tr/PublicBot?style=flat) ![](https://badges.frapsoft.com/os/v1/open-source.svg) [![CircleCI](https://circleci.com/gh/xkral-tr/PublicBot.svg?style=svg)](https://circleci.com/gh/xkral-tr/PublicBot)
 
 ## Table Of Content
 

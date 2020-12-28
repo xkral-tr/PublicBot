@@ -5,15 +5,15 @@ jest.useFakeTimers();
 
 describe('Load Commands', () => {
     it('should load all commands', () => {
-        loadCommands(commandsDir).then((result) => {
+        return loadCommands(commandsDir).then((result) => {
             expect(result).toBe('All commands loaded.');
         });
     });
 
     it('should say there is no command', () => {
-        const emptyDir = '../../test/unit/leave_me_empty';
+        const dir = '__there_is_no_dir__';
 
-        loadCommands(emptyDir).then((result) => {
+        return loadCommands(dir).then((result) => {
             expect(result).toBe('There is no command.');
         });
     });

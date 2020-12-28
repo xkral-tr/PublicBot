@@ -20,7 +20,7 @@ const loadCommands = (commandsPath) => {
         glob(
             path.join(__dirname, commandsPath, `**/*.${extension}`),
             (err, files) => {
-                if (err) reject(settings.errorMessage);
+                if (err) reject('Directory not found.');
                 else {
                     if (files.length === 0) resolve('There is no command.');
                     else {

@@ -1,9 +1,9 @@
 const ServerSchema = require('../database/ServerSchema');
-const Argument = require('../Argument');
 const { ServerDefaultSchema } = require('../database/SchemaDefault');
 const { SetMessage } = require('../utils/Messages');
 const { UpdateOrCreate } = require('../database/CRUD');
 const { RequirePermission } = require('../utils/Permission');
+const Argument = require('../Argument');
 
 module.exports = {
     name: 'set-language',
@@ -11,7 +11,7 @@ module.exports = {
     pattern: 'language:required',
     execute(client, message, args, data) {
         // arguments.checkArguments('ANAN');
-        const Arguments = new Argument(args, this.pattern, false);
+        const Arguments = new Argument(args, this.pattern, true);
 
         const language = Arguments.getArgument('language:required');
 

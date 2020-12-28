@@ -1,5 +1,5 @@
 const Argument = require('../Argument');
-const getFromMention = require('../utils/Mention');
+const { ErrorLog } = require('../utils/Log');
 const { ErrorMessage, SuccessMessage } = require('../utils/Messages');
 
 module.exports = {
@@ -9,16 +9,14 @@ module.exports = {
     spread: true,
     execute(client, message, args, data) {
         const Arguments = new Argument(args, this.pattern, true);
-        const USER = 1;
         // Check author has "ban" permission
         if (message.member.hasPermission('BAN_MEMBERS')) {
             if (message.mentions.members.first()) {
                 const reason = Arguments.getArgument('reason');
                 message.mentions.members
                     .first()
-                    .ban({ reason: reason })
+                    .ban()
                     .then((member) => {
-                        console.log(mentionUser);
                         SuccessMessage(
                             message,
                             `User **${member.displayName}** banned succesfully`,
@@ -34,6 +32,7 @@ module.exports = {
                         );
                     })
                     .catch((error) => {
+                        ErrorLog(error);
                         ErrorMessage(message, `Failed to ban`, []);
                     });
             } else {
