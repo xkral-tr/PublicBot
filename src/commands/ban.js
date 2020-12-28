@@ -1,6 +1,8 @@
 const Argument = require('../Argument');
+const locale = require('../utils/Localization');
 const { ErrorLog } = require('../utils/Log');
 const { ErrorMessage, SuccessMessage } = require('../utils/Messages');
+const Mustache = require('mustache');
 
 module.exports = {
     name: 'ban',
@@ -9,6 +11,8 @@ module.exports = {
     category: 'moderation',
     spread: true,
     execute(client, message, args, data) {
+        const permission = 'Ban';
+
         const Arguments = new Argument(args, this.pattern, true);
         // Check author has "ban" permission
         if (message.member.hasPermission('BAN_MEMBERS')) {
@@ -20,27 +24,50 @@ module.exports = {
                     .then((member) => {
                         SuccessMessage(
                             message,
-                            `User **${member.displayName}** banned succesfully`,
+                            Mustache.render(
+                                locale(data.language, 'successfully_banned'),
+                                { name: member.displayName }
+                            ),
                             [
                                 {
-                                    name: 'Reasons',
+                                    name: locale(data.language, 'reason'),
                                     value:
                                         reason != ''
                                             ? reason
-                                            : 'Reason not specified                            ',
+                                            : locale(
+                                                  data.language,
+                                                  'reason_not_specified'
+                                              ),
                                 },
                             ]
                         );
                     })
                     .catch((error) => {
                         ErrorLog(error);
-                        ErrorMessage(message, `Failed to ban`, []);
+                        ErrorMessage(
+                            message,
+                            Mustache.render(
+                                locale(data.language, 'failed_to'),
+                                { what: permission }
+                            ),
+                            []
+                        );
                     });
             } else {
-                ErrorMessage(message, 'You need to mention a user', []);
+                ErrorMessage(
+                    message,
+                    locale(data.language, 'need_mention_user'),
+                    []
+                );
             }
         } else {
-            ErrorMessage(message, 'You dont have ban permission', []);
+            ErrorMessage(
+                message,
+                Mustache.render(locale(data.language, 'permission_required'), {
+                    permission: permission,
+                }),
+                []
+            );
         }
     },
 };

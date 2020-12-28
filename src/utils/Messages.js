@@ -8,14 +8,10 @@
 
 const { MessageEmbed, Message } = require('discord.js');
 
-const SetMessage = (message, what, to, fields) => {
+const SetMessage = (message, text, fields) => {
     const embed = new MessageEmbed()
         .setColor('BLUE')
-        .addField(
-            '<a:question:793036796996747275> SET',
-            `${what} set to **${to}** success`,
-            false
-        )
+        .addField('<a:question:793036796996747275> SET', text, false)
         .setTimestamp(new Date())
         .addFields(fields)
         .setFooter(

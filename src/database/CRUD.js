@@ -7,6 +7,7 @@
 ////////////////////////////////////////
 
 const { CmdDoneLog, CmdErrorLog, ErrorLog } = require('../utils/Log');
+const { findOneAndUpdate } = require('./ServerSchema');
 
 const FindOne = (schema, query) => {
     return new Promise((resolve, reject) => {
@@ -34,30 +35,71 @@ const Create = (object, schemaName) => {
                 resolve(result);
             })
             .catch((err) => {
-                CmdErrorLog(`Creating ${schemaName.toLowerCase()} failed.`);
+                CmdErrorLog(
+                    `Creating ${schemaName.toLowerCase()} failed. ERR: ${err}`
+                );
                 reject('Failed');
             });
     });
 };
 
-const Update = (schema, query, update) => {
-    schema.updateOne(query, update, (err, raw) => {
-        if (err) CmdErrorLog('Update failed.');
-        else CmdDoneLog('Updated succesfully');
+const FindAndUpdate = (schema, query, update) => {
+    return new Promise((resolve, reject) => {
+        schema.findOneAndUpdate(query, update, { new: true }, (err, raw) => {
+            if (err) {
+                CmdErrorLog('Update failed.');
+                reject(err);
+            } else {
+                CmdDoneLog('Updated succesfully');
+                resolve(raw);
+            }
+        });
     });
 };
 
-const UpdateOrCreate = (schema, object, query, update) => {
+const Update = (schema, query, update) => {
+    schema.updateOne(query, update, (err, raw) => {
+        if (err) {
+            CmdErrorLog('Update failed.');
+        } else {
+            CmdDoneLog('Updated succesfully');
+        }
+    });
+};
+
+const UpdateOrCreate = (schema, object, query, update, returnUpdated) => {
     return new Promise((resolve, reject) => {
-        FindOne(schema, query)
-            .then((result) => {
-                if (result.length != 0) Update(schema, query, update);
-                else Create(object, schema.collection.collectionName);
-                resolve();
-            })
-            .catch((err) => {
-                reject(err);
-            });
+        if (returnUpdated) {
+            FindAndUpdate(schema, query, update)
+                .then((result) => {
+                    resolve(result);
+                })
+                .catch((err) => {
+                    if (err) reject(err);
+                    else {
+                        Create(object, schema.collection.collectionName)
+                            .then((result) => {
+                                resolve(result);
+                            })
+                            .catch((err2) => {
+                                reject(err2);
+                            });
+                    }
+                });
+        } else {
+            FindOne(schema, query)
+                .then((result) => {
+                    if (result.length != 0) {
+                        Update(schema, query, update);
+                    } else {
+                        Create(object, schema.collection.collectionName);
+                    }
+                    resolve();
+                })
+                .catch((err) => {
+                    reject(err);
+                });
+        }
     });
 };
 

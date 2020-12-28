@@ -13,7 +13,7 @@ const { FindOrCreate } = require('../database/CRUD');
 const ServerSchema = require('../database/ServerSchema');
 const mongoose = require('mongoose');
 const Argument = require('../Argument');
-const { get } = require('http');
+
 const OnMessage = (client, message) => {
     // BOT Check
     if (message.author.bot) return;
@@ -29,6 +29,9 @@ const OnMessage = (client, message) => {
 
     FindOrCreate(ServerSchema, server, { guildId: message.guild.id })
         .then((result) => {
+            // Set Language
+            language = result.language;
+
             const args = message.content
                 .slice(result.prefix.length)
                 .trim()
@@ -51,7 +54,8 @@ const OnMessage = (client, message) => {
                     if (
                         Arguments.checkArguments(
                             message,
-                            `${result.prefix}${getCommand.name}`
+                            `${result.prefix}${getCommand.name}`,
+                            result.language
                         )
                     ) {
                         getCommand.execute(client, message, args, result);
@@ -65,7 +69,7 @@ const OnMessage = (client, message) => {
         })
         .catch((err) => {
             CmdErrorLog(err);
-            message.channel.send('I have a database problem!');
+            message.channel.send('I have a problem!');
         });
 };
 

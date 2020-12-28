@@ -6,6 +6,9 @@ const { UpdateOrCreate } = require('../database/CRUD');
 const { SetMessage } = require('../utils/Messages');
 
 const { RequirePermission } = require('../utils/Permission');
+const Mustache = require('mustache');
+const { CmdErrorLog } = require('../utils/Log');
+const locale = require('../utils/Localization');
 
 module.exports = {
     name: 'set-prefix',
@@ -26,19 +29,23 @@ module.exports = {
         });
 
         if (RequirePermission(message, data.modRoles)) {
-            UpdateOrCreate(ServerSchema, server, query, update)
+            UpdateOrCreate(ServerSchema, server, query, update, false)
                 .then(() => {
-                    SetMessage(message, 'Prefix', prefix, []);
+                    SetMessage(
+                        message,
+                        Mustache.render(locale(data.language, 'set_to'), {
+                            what: locale(data.language, 'prefix'),
+                            to: prefix,
+                        }),
+                        []
+                    );
                 })
                 .catch((err) => {
-                    message.channel.send('Sorry. I have a problem.');
+                    CmdErrorLog(err);
+                    message.channel.send(locale(data.language, 'problem'));
                 });
         } else {
-            ErrorMessage(
-                message,
-                'You do not have permission to use this command',
-                []
-            );
+            ErrorMessage(message, locale(data.language, 'no_permission'), []);
         }
     },
 };

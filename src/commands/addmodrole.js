@@ -13,6 +13,10 @@ const {
     RequirePermission,
     RoleExistInGuild,
 } = require('../utils/Permission');
+const locale = require('../utils/Localization');
+
+const { CmdErrorLog } = require('../utils/Log');
+const Mustache = require('mustache');
 
 module.exports = {
     name: 'addmodrole',
@@ -36,25 +40,38 @@ module.exports = {
                         .then((result) => {
                             SuccessMessage(
                                 message,
-                                `Anyone with a ${role} role is now a moderator`,
+                                Mustache.render(
+                                    locale(
+                                        data.language,
+                                        'successfully_role_add'
+                                    ),
+                                    { role: role }
+                                ),
                                 []
                             );
                         })
                         .catch((err) => {
-                            message.channel.send('Sorry. I have a problem.');
+                            CmdErrorLog(err);
+                            message.channel.send(
+                                locale(data.language, 'problem')
+                            );
                         });
                 } else {
-                    InfoMessage(message, 'This role already exists', []);
+                    InfoMessage(
+                        message,
+                        locale(data.language, 'role_already_exist'),
+                        []
+                    );
                 }
             } else {
-                ErrorMessage(message, 'Role not found', []);
+                ErrorMessage(
+                    message,
+                    locale(data.language, 'role_not_found'),
+                    []
+                );
             }
         } else {
-            ErrorMessage(
-                message,
-                'You do not have permission to use this command',
-                []
-            );
+            ErrorMessage(message, locale(data.language, 'no_permission'), []);
         }
     },
 };

@@ -17,12 +17,13 @@
         "nodemon": "^2.0.6"
     },
     "dependencies": {
+        "axios": "^0.21.1",
         "center-align": "^1.0.1",
         "chalk": "^4.1.0",
-        "axios": "^0.21.1",
         "discord.js": "^12.5.1",
         "dotenv": "^8.2.0",
         "glob": "^7.1.6",
-        "mongoose": "^5.11.8"
+        "mongoose": "^5.11.8",
+        "mustache": "^4.1.0"
     }
 }
