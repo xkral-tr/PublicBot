@@ -13,7 +13,7 @@ module.exports = {
     pattern: 'prefix:required',
     category: 'settings',
     execute(client, message, args, data) {
-        const Arguments = Argument(args, this.pattern, true);
+        const Arguments = new Argument(args, this.pattern, true);
 
         const prefix = Arguments.getArgument('prefix:required');
 
