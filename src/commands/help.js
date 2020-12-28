@@ -1,11 +1,12 @@
 const { MessageEmbed } = require('discord.js');
 const Argument = require('../Argument');
 const { commands } = require('../utils/LoadCommands');
+const locale = require('../utils/Localization');
+const Mustache = require('mustache');
 
 module.exports = {
     name: 'help',
-    description:
-        'When we make our **website**. You will be able to adjust your settings from the **dashboard**',
+    description: 'help_description',
     pattern: 'category_or_command',
     execute(client, message, args, data) {
         console.log(data);
@@ -23,13 +24,15 @@ module.exports = {
             .setTitle('<:2713_Microphone:793036662367715338> HELP')
             .setColor('RANDOM')
             .setFooter(
-                `${message.author.username} asked for help`,
+                Mustache.render(locale(data.language, 'asked_for_help'), {
+                    user: message.author.username,
+                }),
                 message.author.displayAvatarURL()
             )
             .setImage(
                 'https://raw.githubusercontent.com/xkral-tr/PublicBot/master/images/title2.png'
             )
-            .setDescription(this.description);
+            .setDescription(locale(data.language, this.description));
         if (category_or_command) {
             commands.forEach((command) => {
                 if (command.name != this.name) {
@@ -62,9 +65,12 @@ module.exports = {
                             .setTitle(`${data.prefix}${command.name}`)
                             .setDescription('')
                             .setImage('')
-                            .addField('Description:', command.description)
                             .addField(
-                                'Usage Of Command',
+                                locale(data.language, 'description'),
+                                command.description
+                            )
+                            .addField(
+                                locale(data.language, 'usage_of_command'),
                                 Arguments.usage(
                                     data.prefix + command.name,
                                     this.pattern.split(' ')
@@ -77,19 +83,19 @@ module.exports = {
             embed
                 .addField(
                     '<:gears:793116264582479892> Settings',
-                    "Change the bot's settings"
+                    locale(data.language, 'category_settings_desc')
                 )
                 .addField(
                     '<:security:793117769917923409> Moderation',
-                    'You can keep this server safe with these excellent commands'
+                    locale(data.language, 'category_moderation_desc')
                 )
                 .addField(
                     '<:fun:793116072035221506> Fun',
-                    "Let's have some fun"
+                    locale(data.language, 'category_fun_desc')
                 )
                 .addField(
                     '<:public:793116324875599952> BOT',
-                    'Bot bot bot bot bot!'
+                    locale(data.language, 'category_bot_desc')
                 );
         }
 
@@ -97,7 +103,7 @@ module.exports = {
             .addFields(Helpers)
             .addField(
                 '<:github:792506877195714631> GITHUB',
-                'Did you know that Public Bot is an **open source** project?\n**Our github link** [here](https://github.com/xkral-tr/PublicBot)',
+                locale(data.language, 'github'),
                 false
             )
 

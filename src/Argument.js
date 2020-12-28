@@ -8,6 +8,7 @@
 
 const { ErrorLog } = require('./utils/Log');
 const { ErrorMessage } = require('./utils/Messages');
+const locale = require('./utils/Localization');
 
 class Argument {
     constructor(args, pattern, spread) {
@@ -33,7 +34,7 @@ class Argument {
     }
 
     // Check Arguments
-    checkArguments(message, name) {
+    checkArguments(message, name, lang) {
         const patternArray = this.pattern.split(' ');
 
         for (let pattern of patternArray) {
@@ -57,8 +58,11 @@ class Argument {
                     }
 
                     if (message) {
-                        ErrorMessage(message, 'You passed required argument', [
-                            { name: 'Usage of Command', value: commandString },
+                        ErrorMessage(message, locale(lang, 'passed_argument'), [
+                            {
+                                name: locale(lang, 'usage_of_command'),
+                                value: commandString,
+                            },
                         ]);
                     }
 

@@ -1,5 +1,6 @@
+const locale = require('../utils/Localization');
 const { ErrorMessage, SuccessMessage } = require('../utils/Messages');
-
+const Mustache = require('mustache');
 module.exports = {
     name: 'kick',
     description: 'Kick someone',
@@ -8,6 +9,8 @@ module.exports = {
     spread: true,
     execute(client, message, args, data) {
         // Check author has "ban" permission
+        const permission = 'Kick';
+
         if (message.member.hasPermission('KICK_MEMBERS')) {
             if (message.mentions.members.first()) {
                 message.mentions.members
@@ -17,18 +20,38 @@ module.exports = {
                         //console.log(mentionUser);
                         SuccessMessage(
                             message,
-                            `User **${member.displayName}** kicked succesfully`,
+                            Mustache.render(
+                                locale(data.language, 'successfully_kicked'),
+                                { user: member.displayName }
+                            ),
                             []
                         );
                     })
                     .catch((error) => {
-                        ErrorMessage(message, `Failed to kick: ${error}`, []);
+                        ErrorMessage(
+                            message,
+                            Mustache.render(
+                                locale(data.language, 'failed_to'),
+                                { what: 'kick' }
+                            ),
+                            []
+                        );
                     });
             } else {
-                ErrorMessage(message, 'You need to mention a user', []);
+                ErrorMessage(
+                    message,
+                    locale(data.language, 'need_mention_user'),
+                    []
+                );
             }
         } else {
-            ErrorMessage(message, 'You dont have kick permission', []);
+            ErrorMessage(
+                message,
+                Mustache(locale(data.language, 'permission_required'), {
+                    permission: permission,
+                }),
+                []
+            );
         }
     },
 };

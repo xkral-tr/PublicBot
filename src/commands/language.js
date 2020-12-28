@@ -1,9 +1,13 @@
 const ServerSchema = require('../database/ServerSchema');
 const { ServerDefaultSchema } = require('../database/SchemaDefault');
-const { SetMessage } = require('../utils/Messages');
+const { SetMessage, ErrorMessage } = require('../utils/Messages');
 const { UpdateOrCreate } = require('../database/CRUD');
 const { RequirePermission } = require('../utils/Permission');
 const Argument = require('../Argument');
+const Mustache = require('mustache');
+
+const languages = require('../../locales/__languages__.json');
+const locale = require('../utils/Localization');
 
 module.exports = {
     name: 'set-language',
@@ -25,19 +29,40 @@ module.exports = {
         });
 
         if (RequirePermission(message, data.modRoles)) {
-            UpdateOrCreate(ServerSchema, server, query, update)
-                .then(() => {
-                    SetMessage(message, 'Language', language, []);
-                })
-                .catch((err) => {
-                    message.channel.send('Sorry. I have a problem.');
-                });
+            if (languages[language]) {
+                UpdateOrCreate(ServerSchema, server, query, update, true)
+                    .then((result) => {
+                        console.log(result);
+                        SetMessage(
+                            message,
+                            Mustache.render(
+                                locale(
+                                    result.language || data.language,
+                                    'set_to'
+                                ),
+                                {
+                                    what: locale(
+                                        result.language || data.language,
+                                        'language'
+                                    ),
+                                    to: languages[language],
+                                }
+                            ),
+                            []
+                        );
+                    })
+                    .catch((err) => {
+                        message.channel.send(locale(data.language, 'problem'));
+                    });
+            } else {
+                ErrorMessage(
+                    message,
+                    locale(data.language, 'language_not_found'),
+                    []
+                );
+            }
         } else {
-            ErrorMessage(
-                message,
-                'You do not have permission to use this command',
-                []
-            );
+            ErrorMessage(message, locale(data.language, 'no_permission'), []);
         }
     },
 };

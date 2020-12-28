@@ -4,6 +4,8 @@ const { ErrorMessage, SuccessMessage } = require('../utils/Messages');
 const Argument = require('../Argument');
 const { ServerDefaultSchema } = require('../database/SchemaDefault');
 const { RequirePermission } = require('../utils/Permission');
+const locale = require('../utils/Localization');
+const Mustache = require('mustache');
 
 module.exports = {
     name: 'removemodrole',
@@ -26,30 +28,29 @@ module.exports = {
                     .then((result) => {
                         SuccessMessage(
                             message,
-                            `Succesfully removed ${role} from moderator role list`,
+                            Mustache.render(
+                                locale(data.language, 'successfully_removed'),
+                                { role: role }
+                            ),
                             []
                         );
                     })
-                    .catch(() => {
-                        ErrorMessage(
+                    .catch((err) => {
+                        SetMessage(
                             message,
-                            'Failed to remove role from moderator role list',
+                            locale(data.language, 'remove_mod_failed'),
                             []
                         );
                     });
             } else {
                 ErrorMessage(
                     message,
-                    'Already this role is not a moderator role',
+                    locale(data.language, 'not_mod_role_already'),
                     []
                 );
             }
         } else {
-            ErrorMessage(
-                message,
-                'You do not have permission to use this command',
-                []
-            );
+            ErrorMessage(message, locale(data.language, 'no_permission'), []);
         }
     },
 };
