@@ -1,6 +1,6 @@
-# <p style="text-align:center">PUBLIC BOT</p>
+# PUBLIC BOT
 
- <p style="text-align:center">Public bot is an open source discord bot.</p>
+Public bot is an open source discord bot.
 
 ![](https://img.shields.io/github/watchers/xkral-tr/PublicBot?style=flat) ![](https://img.shields.io/github/forks/xkral-tr/PublicBot?style=flat) ![](https://img.shields.io/github/stars/xkral-tr/PublicBot?style=flat) ![](https://badges.frapsoft.com/os/v1/open-source.svg)
 
@@ -33,6 +33,7 @@ Then you can run bot with this command
     npm run start
 
 ### Deploying to Heroku
+
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/xkral-tr/PublicBot)
 
 ### Contributing

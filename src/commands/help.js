@@ -38,7 +38,7 @@ module.exports = {
             .addFields(Helpers)
             .addField(
                 '<:github:792506877195714631> GITHUB',
-                'Our github link:',
+                'Our github link [here](https://github.com/xkral-tr/PublicBot)',
                 false
             )
             .setTimestamp(new Date())
