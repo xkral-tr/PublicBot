@@ -12,7 +12,7 @@ const SetMessage = (message, what, to, fields) => {
     const embed = new MessageEmbed()
         .setColor('BLUE')
         .addField(
-            ':grey_question: SET',
+            '<a:question:793036796996747275> SET',
             `${what} set to **${to}** success`,
             false
         )

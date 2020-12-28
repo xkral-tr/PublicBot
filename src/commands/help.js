@@ -28,7 +28,7 @@ module.exports = {
         });
 
         const embed = new MessageEmbed()
-            .setTitle('HELP')
+            .setTitle('<:2713_Microphone:793036662367715338> HELP')
             .setColor('RANDOM')
             .setFooter(
                 `${message.author.username} asked for help`,
