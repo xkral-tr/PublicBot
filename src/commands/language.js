@@ -12,7 +12,7 @@ module.exports = {
     category: 'settings',
     execute(client, message, args, data) {
         // arguments.checkArguments('ANAN');
-        const Arguments = new Argument(args, this.pattern, true);
+        const Arguments = new Argument(args, this.pattern, false);
 
         const language = Arguments.getArgument('language:required');
 

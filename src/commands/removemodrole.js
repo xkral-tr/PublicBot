@@ -17,7 +17,6 @@ module.exports = {
         const server = ServerDefaultSchema(query);
         const role = Arguments.getArgument('role:required');
 
-        console.log(role);
         if (RequirePermission(message, data.modRoles)) {
             if (data.modRoles.includes(role)) {
                 const update = {
