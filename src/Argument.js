@@ -7,9 +7,7 @@
 ////////////////////////////////////////
 
 const { ErrorLog } = require('./utils/Log');
-const { MessageEmbed } = require('discord.js');
 const { ErrorMessage } = require('./utils/Messages');
-const { pattern } = require('./commands/language');
 
 class Argument {
     constructor(args, pattern, spread) {
@@ -19,7 +17,7 @@ class Argument {
     }
 
     // Check Arguments
-    checkArguments = (message, name) => {
+    checkArguments(message, name) {
         const patternArray = this.pattern.split(' ');
 
         for (let pattern of patternArray) {
@@ -52,13 +50,14 @@ class Argument {
             }
         }
         return true;
-    };
+    }
 
-    getArgument = (arg) => {
+    getArgument(arg) {
         const patternArray = this.pattern.split(' ');
         let index = patternArray.indexOf(arg);
 
         //console.log(index);
+        // FIXME: There is something wrong.
         if (index === -1) {
             ErrorLog('Argument not found.');
             return null;
@@ -74,7 +73,7 @@ class Argument {
                 return this.args[index];
             }
         }
-    };
+    }
 }
 
 module.exports = Argument;

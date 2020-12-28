@@ -30,7 +30,7 @@ const ErrorMessage = (message, text, fields) => {
     const embed = new MessageEmbed()
         .setColor('RED')
         .setTimestamp(new Date())
-        .addField('❌ ERROR', text, false)
+        .addField('<a:no:793025696175751168> ERROR', text, false)
         .addFields(fields)
         .setFooter(
             `${message.author.username} got an error`,
@@ -43,7 +43,7 @@ const ErrorMessage = (message, text, fields) => {
 const SuccessMessage = (message, text, fields) => {
     const embed = new MessageEmbed()
         .setColor('RED')
-        .addField('<:check2:792434908613443625> SUCCESS', text, false)
+        .addField('<a:tick:793024486600736789> SUCCESS', text, false)
         .setTimestamp(new Date())
         .addFields(fields)
         .setFooter('', message.author.displayAvatarURL());
