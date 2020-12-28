@@ -34,7 +34,7 @@ describe('Argument', () => {
     });
 
     it('Some Test 2: must return text spread', () => {
-        const _args = ['dummy', 'text spread'];
+        const _args = ['dummy', 'text', 'spread'];
         const pattern = 'argument:required argument2';
 
         const args = new Argument(_args, pattern, true);

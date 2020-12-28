@@ -43,6 +43,7 @@ class Argument {
                 // Argument required
                 const value = this.getArgument(pattern);
 
+                console.log(value);
                 if (!value) {
                     // Null argument
                     let commandString = `\`${name}\` `;
@@ -72,22 +73,17 @@ class Argument {
         const patternArray = this.pattern.split(' ');
         let index = patternArray.indexOf(arg);
 
-        //console.log(index);
-        // FIXME: There is something wrong.
+        this.args = this.args.join(' ').trim().split(' ');
+
         if (index === -1) {
             ErrorLog('Argument not found.');
             return null;
         } else if (this.spread && index == patternArray.length - 1) {
-            return this.args
-                .splice(patternArray.length - 1)
-                .join(' ')
-                .trim();
+            //console.log(this.args.splice(0, patternArray.length - 1).join(' '));
+
+            return this.args.slice(patternArray.length - 1).join(' ');
         } else {
-            if (arg === '') {
-                index++;
-            } else {
-                return this.args[index];
-            }
+            return this.args[index];
         }
     }
 }
