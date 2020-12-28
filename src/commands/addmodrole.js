@@ -15,9 +15,10 @@ const {
 } = require('../utils/Permission');
 
 module.exports = {
-    name: 'addmod',
+    name: 'addmodrole',
     description: 'Add role to moderator roles',
     pattern: 'role:required',
+    category: 'moderation',
     execute(client, message, args, data) {
         const Arguments = new Argument(args, this.pattern, true);
 

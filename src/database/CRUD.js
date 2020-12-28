@@ -6,7 +6,7 @@
 ///     Find And DO Stuff
 ////////////////////////////////////////
 
-const { CmdDoneLog, CmdErrorLog } = require('../utils/Log');
+const { CmdDoneLog, CmdErrorLog, ErrorLog } = require('../utils/Log');
 
 const FindOne = (schema, query) => {
     return new Promise((resolve, reject) => {

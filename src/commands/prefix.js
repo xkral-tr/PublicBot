@@ -11,6 +11,7 @@ module.exports = {
     name: 'set-prefix',
     description: 'Set prefix to someting',
     pattern: 'prefix:required',
+    category: 'settings',
     execute(client, message, args, data) {
         const Arguments = Argument(args, this.pattern, true);
 
