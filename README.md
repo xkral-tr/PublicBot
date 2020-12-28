@@ -1,4 +1,4 @@
-# PUBLIC BOT
+![Title](images/title.png)
 
 Public bot is an open source discord bot.
 
