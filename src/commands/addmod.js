@@ -25,7 +25,7 @@ module.exports = {
         const server = ServerDefaultSchema(query);
         const role = Arguments.getArgument('role:required');
         const update = {
-            $push: { modRoles: Arguments.getArgument('role:required') },
+            $push: { modRoles: role },
         };
 
         if (RequirePermission(message, data.modRoles)) {
