@@ -9,6 +9,7 @@ module.exports = {
     name: 'set-language',
     description: 'Set language',
     pattern: 'language:required',
+    category: 'settings',
     execute(client, message, args, data) {
         // arguments.checkArguments('ANAN');
         const Arguments = new Argument(args, this.pattern, true);

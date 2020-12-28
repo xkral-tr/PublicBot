@@ -3,5 +3,6 @@ module.exports = {
     description: 'This is for development',
     pattern: '',
     spread: false,
+    category: '',
     execute(client, message, args, data) {},
 };

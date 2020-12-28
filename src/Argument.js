@@ -16,6 +16,22 @@ class Argument {
         this.spread = spread;
     }
 
+    usage(name, patternArray) {
+        const required = ':required';
+
+        let commandString = `\`${name}\` `;
+        for (let pattern of patternArray) {
+            if (pattern.endsWith(required)) {
+                const key = pattern.slice(0, -1 * required.length);
+                commandString += `\`<${key}>\` `;
+            } else {
+                commandString += `\`<${pattern}>\` `;
+            }
+        }
+
+        return commandString;
+    }
+
     // Check Arguments
     checkArguments(message, name) {
         const patternArray = this.pattern.split(' ');

@@ -6,9 +6,10 @@ const { ServerDefaultSchema } = require('../database/SchemaDefault');
 const { RequirePermission } = require('../utils/Permission');
 
 module.exports = {
-    name: 'removemod',
+    name: 'removemodrole',
     description: 'Removes mod role',
     pattern: 'role:required',
+    category: 'moderation',
     execute(client, message, args, data) {
         const Arguments = new Argument(args, this.pattern, true);
 

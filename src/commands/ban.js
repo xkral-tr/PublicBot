@@ -6,6 +6,7 @@ module.exports = {
     name: 'ban',
     description: 'Ban someone',
     pattern: 'user:required reason',
+    category: 'moderation',
     spread: true,
     execute(client, message, args, data) {
         const Arguments = new Argument(args, this.pattern, true);

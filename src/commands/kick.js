@@ -4,6 +4,7 @@ module.exports = {
     name: 'kick',
     description: 'Kick someone',
     pattern: 'user:required',
+    category: 'moderation',
     spread: true,
     execute(client, message, args, data) {
         // Check author has "ban" permission
