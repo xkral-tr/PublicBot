@@ -12,7 +12,7 @@ const locale = require('../utils/Localization');
 
 module.exports = {
     name: 'set-prefix',
-    description: 'Set prefix to someting',
+    description: 'command_prefix',
     pattern: 'prefix:required',
     category: 'settings',
     execute(client, message, args, data) {

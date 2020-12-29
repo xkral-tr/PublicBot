@@ -3,7 +3,7 @@ const { ErrorMessage, SuccessMessage } = require('../utils/Messages');
 const Mustache = require('mustache');
 module.exports = {
     name: 'kick',
-    description: 'Kick someone',
+    description: 'command_kick',
     pattern: 'user:required',
     category: 'moderation',
     spread: true,

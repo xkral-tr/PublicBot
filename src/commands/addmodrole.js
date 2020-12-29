@@ -20,7 +20,7 @@ const Mustache = require('mustache');
 
 module.exports = {
     name: 'addmodrole',
-    description: 'Add role to moderator roles',
+    description: 'command_addmodrole',
     pattern: 'role:required',
     category: 'moderation',
     execute(client, message, args, data) {

@@ -56,7 +56,10 @@ module.exports = {
 
                         Helpers.push({
                             name: `<a:ruby:792474082196979722> ${data.prefix}${command.name}`,
-                            value: `\`${command.description}\``,
+                            value: `\`${locale(
+                                data.language,
+                                command.description
+                            )}\``,
                             inline: false,
                         });
                     } else if (command.name === category_or_command) {
@@ -67,7 +70,7 @@ module.exports = {
                             .setImage('')
                             .addField(
                                 locale(data.language, 'description'),
-                                command.description
+                                locale(data.language, command.description)
                             )
                             .addField(
                                 locale(data.language, 'usage_of_command'),

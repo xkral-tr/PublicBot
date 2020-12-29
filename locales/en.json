@@ -27,5 +27,12 @@
     "category_fun_desc": "Let's have some fun",
     "category_bot_desc": "Bot bot bot bot bot!",
     "asked_for_help": "{{user}} asked for help",
+    "not_a_number": "Please enter a number",
+    "number": "Number",
+    "command_addmodrole": "Add role to moderator roles",
+    "command_ban": "Ban mentioned user",
+    "command_kick": "Kick mentioned user",
+    "command_language": "Set language of bot",
+    "command_number": "Shows interesting facts about numbers",
     "github": "Did you know that Public Bot is an **open source** project?\n**Our github link** [here](https://github.com/xkral-tr/PublicBot)"
 }
