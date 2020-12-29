@@ -34,7 +34,12 @@ const RequirePermission = (message, mods) => {
     } else {
         for (const mod of mods) {
             // User is mod
-            return RoleExistInGuild(message, mod);
+            if (
+                message.member.roles.find((role) => role.name == mod) &&
+                RoleExistInGuild(message, mod)
+            ) {
+                return true;
+            }
         }
 
         return false;
