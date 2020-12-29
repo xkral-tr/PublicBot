@@ -9,7 +9,7 @@ const Mustache = require('mustache');
 
 module.exports = {
     name: 'removemodrole',
-    description: 'Removes mod role',
+    description: 'command_removemodrole',
     pattern: 'role:required',
     category: 'moderation',
     execute(client, message, args, data) {

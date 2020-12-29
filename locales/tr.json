@@ -27,5 +27,14 @@
     "category_fun_desc": "Hadi Biraz eğlenelim",
     "category_bot_desc": "Bot bot bot bot bot!",
     "asked_for_help": "{{user}} yardım istedi",
+    "not_a_number": "Lütfen bir sayı giriniz",
+    "number": "Sayı",
+    "command_addmodrole": "Girilen rolü moderatör rol listesine ekler",
+    "command_ban": "Bahsetilen kişiyi banlar",
+    "command_kick": "Bahsedilen kişiyi kickler",
+    "command_language": "Botun dilini ayarlar",
+    "command_number": "Sayılar hakkında ilginç bilgiler verir",
+    "command_prefix": "Botun önekini ayarlar",
+    "command_removemodrole": "Rolü moderatör roller listesinden kaldırır",
     "github": "Public Bot' un **açık kaynak kodlu** bir proje olduğunu biliyor muydun?\n**Github linkimiz** [burada](https://github.com/xkral-tr/PublicBot)"
 }

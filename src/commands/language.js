@@ -11,7 +11,7 @@ const locale = require('../utils/Localization');
 
 module.exports = {
     name: 'set-language',
-    description: 'Set language',
+    description: 'command_language',
     pattern: 'language:required',
     category: 'settings',
     execute(client, message, args, data) {

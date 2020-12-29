@@ -6,7 +6,7 @@ const Mustache = require('mustache');
 
 module.exports = {
     name: 'ban',
-    description: 'Ban someone',
+    description: 'command_ban',
     pattern: 'user:required reason',
     category: 'moderation',
     spread: true,
