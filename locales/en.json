@@ -15,6 +15,7 @@
     "need_mention_user": "You need to mention a user",
     "successfully_banned": "User **{{name}}** banned succesfully",
     "successfully_kicked": "User **{{name}}** kicked succesfully",
+    "successfully_unbanned": "User **{{name}}** unbanned succesfully",
     "successfully_removed": "Succesfully removed {{role}} from moderator role list",
     "reason": "Reason",
     "language": "Language",
@@ -34,5 +35,9 @@
     "command_kick": "Kick mentioned user",
     "command_language": "Set language of bot",
     "command_number": "Shows interesting facts about numbers",
+    "command_prefix": "Set prefix of bot",
+    "command_removemodrole": "Removes role from moderator role list",
+    "not_banned_already_or_user_not_found": "User is not currently banned or user not exist",
+    "command_unban": "Unban user",
     "github": "Did you know that Public Bot is an **open source** project?\n**Our github link** [here](https://github.com/xkral-tr/PublicBot)"
 }

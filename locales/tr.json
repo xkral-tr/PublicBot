@@ -15,6 +15,7 @@
     "need_mention_user": "Bir kullanıcıdan bahsetmen lazım.",
     "successfully_banned": "Kullanıcı **{{name}}** başarıyla banlandı",
     "successfully_kicked": "Kullanıcı **{{name}}** başarıyla kicklendi",
+    "successfully_unbanned": "**{{name}}** adli kullanıcının banı başarıyla kaldırıldı ",
     "successfully_removed": "{{role}} rolü moderatör rol listesinden başarıyla kaldırıldı",
     "reason": "Sebep",
     "language": "Dil",
@@ -36,5 +37,7 @@
     "command_number": "Sayılar hakkında ilginç bilgiler verir",
     "command_prefix": "Botun önekini ayarlar",
     "command_removemodrole": "Rolü moderatör roller listesinden kaldırır",
+    "command_unban": "Kullanıcı banını kaldır",
+    "not_banned_already_or_user_not_found": "Kullanıcı halihazırda banlanmamış ya da kullanıcı yok",
     "github": "Public Bot' un **açık kaynak kodlu** bir proje olduğunu biliyor muydun?\n**Github linkimiz** [burada](https://github.com/xkral-tr/PublicBot)"
 }
