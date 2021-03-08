@@ -13,6 +13,7 @@
     "failed_to": "**{{what}}** işlemi başarısız oldu",
     "set_to": "**{{what}}** başarıyla **{{to}}** olarak ayarlandı",
     "need_mention_user": "Bir kullanıcıdan bahsetmen lazım.",
+    "higher_rank_to_kick": "Kicklenecek kullanıcıdan rol olarak üstte olman lazım.",
     "successfully_banned": "Kullanıcı **{{name}}** başarıyla banlandı",
     "successfully_kicked": "Kullanıcı **{{name}}** başarıyla kicklendi",
     "successfully_unbanned": "**{{name}}** adli kullanıcının banı başarıyla kaldırıldı ",
