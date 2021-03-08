@@ -12,13 +12,12 @@ module.exports = {
         const permission = 'Kick';
 
         if (message.member.hasPermission('KICK_MEMBERS')) {
-            if (message.mentions.members.first()) {
-                const member = message.mentions.members.first();
-                
+            const member = message.mentions.members.first();
+            if (member) {
                 if ((message.author.id == message.guild.ownerID) || (message.member.roles.highest.position > member.roles.highest.position)) {
                     member
                         .kick()
-                        .then((member) => {
+                        .then(() => {
                             //console.log(mentionUser);
                             SuccessMessage(
                                 message,
@@ -42,7 +41,8 @@ module.exports = {
                 else {
                     ErrorMessage(
                         message,
-                        locale(data.language, 'higher_rank_kick'),
+                        locale(data.language, 'higher_rank_to_kick'),
+                        []
                     );
                 }
             } else {
