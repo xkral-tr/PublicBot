@@ -13,30 +13,38 @@ module.exports = {
 
         if (message.member.hasPermission('KICK_MEMBERS')) {
             if (message.mentions.members.first()) {
-                message.mentions.members
-                    .first()
-                    .kick()
-                    .then((member) => {
-                        //console.log(mentionUser);
-                        SuccessMessage(
-                            message,
-                            Mustache.render(
-                                locale(data.language, 'successfully_kicked'),
-                                { user: member.displayName }
-                            ),
-                            []
-                        );
-                    })
-                    .catch((error) => {
-                        ErrorMessage(
-                            message,
-                            Mustache.render(
-                                locale(data.language, 'failed_to'),
-                                { what: 'kick' }
-                            ),
-                            []
-                        );
-                    });
+                const member = message.mentions.members.first();
+                
+                if ((message.author.id == message.guild.ownerID) || (message.member.roles.highest.position > member.roles.highest.position)) {
+                    member
+                        .kick()
+                        .then((member) => {
+                            //console.log(mentionUser);
+                            SuccessMessage(
+                                message,
+                                Mustache.render(
+                                    locale(data.language, 'successfully_kicked'),
+                                    { user: member.displayName }
+                                ),
+                                []
+                            );
+                        })
+                        .catch((error) => {
+                            ErrorMessage(
+                                message,
+                                Mustache.render(
+                                    locale(data.language, 'failed_to'),
+                                    { what: 'kick' }
+                                ),
+                                []
+                            );
+                        });
+                else {
+                    ErrorMessage(
+                        message,
+                        locale(data.language, 'higher_rank_kick'),
+                    );
+                }
             } else {
                 ErrorMessage(
                     message,
