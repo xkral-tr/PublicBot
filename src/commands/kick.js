@@ -38,7 +38,7 @@ module.exports = {
                                 []
                             );
                         });
-                else {
+                } else {
                     ErrorMessage(
                         message,
                         locale(data.language, 'higher_rank_to_kick'),
